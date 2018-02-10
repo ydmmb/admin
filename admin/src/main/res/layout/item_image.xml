@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.shizhefei.view.largeimage.LargeImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <io.netopen.hotbitmapgg.library.view.RingProgressBar
+        android:id="@+id/ringProgressBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        app:max="100"
+        app:ringColor="@color/colorDeepOrangePrimary"
+        app:ringProgressColor="@color/colorDeepOrangePrimaryDark"
+        app:ringWidth="3dp"
+        app:style="FILL"
+        app:textColor="@color/colorDeepOrangePrimary"
+        app:textIsShow="true"
+        app:textSize="16sp" />
+</FrameLayout>
+

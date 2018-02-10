@@ -1,0 +1,121 @@
+package com.universe.yz.admin.utils;
+
+import android.text.TextUtils;
+
+import com.universe.yz.admin.model.bean.GankHttpResponse;
+import com.universe.yz.admin.model.http.exception.ApiException;
+import com.universe.yz.admin.model.http.response.CommonHttpResponse;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
+
+/**
+ * Description: RxUtil
+ * Creator: yxc
+ * date: 2016/9/21 18:47
+ */
+public class RxUtil {
+    private static final String TAG = RxUtil.class.getSimpleName();
+    /**
+     * 统一线程处理
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable.Transformer<T, T> rxSchedulerHelper() {    //compose简化线程
+        return new Observable.Transformer<T, T>() {
+            @Override
+            public Observable<T> call(Observable<T> observable) {
+                return observable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
+    }
+
+    /**
+     * 统一返回结果处理
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable.Transformer<CommonHttpResponse<T>, T> handleResult() {   //compose判断结果
+        return new Observable.Transformer<CommonHttpResponse<T>, T>() {
+            @Override
+            public Observable<T> call(Observable<CommonHttpResponse<T>> httpResponseObservable) {
+                return httpResponseObservable.flatMap(new Func1<CommonHttpResponse<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> call(CommonHttpResponse<T> CommonHttpResponse) {
+                        if (CommonHttpResponse.getCode() == 200) {
+                            return createData(CommonHttpResponse.getRet());
+                        } else if (!TextUtils.isEmpty(CommonHttpResponse.getMsg())) {
+                            return Observable.error(new ApiException("*" + CommonHttpResponse.getMsg()));
+                        } else {
+                            return Observable.error(new ApiException("*" + "服务器返回error"));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    public static <T> Observable.Transformer<CommonHttpResponse<T>, T> handleUserResult() {   //compose判断结果
+        return new Observable.Transformer<CommonHttpResponse<T>, T>() {
+            @Override
+            public Observable<T> call(Observable<CommonHttpResponse<T>> httpResponseObservable) {
+                return httpResponseObservable.flatMap(new Func1<CommonHttpResponse<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> call(CommonHttpResponse<T> CommonHttpResponse) {
+                        if (CommonHttpResponse.getCode() == 100) {
+                            return createData(CommonHttpResponse.getRet());
+                        } else if (!TextUtils.isEmpty(CommonHttpResponse.getMsg())) {
+                            return Observable.error(new ApiException("*" + CommonHttpResponse.getMsg()));
+                        } else {
+                            return Observable.error(new ApiException("*" + "服务器返回error"));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    public static <T> Observable.Transformer<GankHttpResponse<T>, T> handleGankResult() {   //compose判断结果
+        return new Observable.Transformer<GankHttpResponse<T>, T>() {
+            @Override
+            public Observable<T> call(Observable<GankHttpResponse<T>> httpResponseObservable) {
+                return httpResponseObservable.flatMap(new Func1<GankHttpResponse<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> call(GankHttpResponse<T> tGankHttpResponse) {
+                        if(!tGankHttpResponse.getError()) {
+                            return createData(tGankHttpResponse.getResults());
+                        } else {
+                            return Observable.error(new ApiException("服务器返回error"));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    /**
+     * 生成Observable
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable<T> createData(final T t) {
+        return Observable.create(new Observable.OnSubscribe<T>() {
+            @Override
+            public void call(Subscriber<? super T> subscriber) {
+                try {
+                    subscriber.onNext(t);
+                    subscriber.onCompleted();
+                } catch (Exception e) {
+                    subscriber.onError(e);
+                }
+            }
+        });
+    }
+}

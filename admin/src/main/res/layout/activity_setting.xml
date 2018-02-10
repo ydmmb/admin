@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.universe.yz.admin.widget.theme.ColorLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/both_match_style"
+    android:background="?attr/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/commen_title" />
+
+    <RelativeLayout
+        android:id="@+id/rl_recommend"
+        style="@style/settingItemStyle">
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/setting_recommend" />
+        <ImageView style="@style/settingItemImgStyle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_clearcache"
+        style="@style/settingItemLittleMarginStyle">
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/setting_recommend_clear" />
+        <TextView
+            android:id="@+id/tv_cache"
+            style="@style/both_wrap_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="0kb"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        style="@style/settingItemStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/about"
+            android:id="@+id/textView" />
+
+        <ImageView style="@style/settingItemImgStyle" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        style="@style/settingItemLittleMarginStyle">
+
+        <TextView
+            style="@style/settingItemTvStyle"
+            android:text="@string/feedback" />
+
+        <ImageView style="@style/settingItemImgStyle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/user_logout"
+        style="@style/settingItemStyle">
+
+        <com.universe.yz.admin.widget.RoundCornerButton
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="退出当前用户"
+            android:enabled="true"
+            app:rcb_backgroundColor="@color/yellow"
+            app:rcb_backgroundColorDisabled="@color/light_grey"
+            app:rcb_cornerRadius="20dp"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+
+</com.universe.yz.admin.widget.theme.ColorLinearLayout>

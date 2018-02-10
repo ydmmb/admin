@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">乐游后台</string>
+    <string name="loading_failed">数据加载失败</string>
+    <string name="author">好电影</string>
+
+    <string name="recommend">精彩推荐</string>
+    <string name="score">评分：</string>
+    <string name="videoType">类型：</string>
+    <string name="region">地区：</string>
+    <string name="airTime">上映时间：</string>
+    <string name="video_intro">简介</string>
+    <string name="video_comment">评论</string>
+    <string name="set_theme">设置主题</string>
+    <string name="theme">主题</string>
+    <string name="cancel">取消</string>
+    <string name="done">完成</string>
+
+
+    <!--mine-->
+    <string name="my_member">会员(支付宝方式)</string>
+    <string name="my_record">历史</string>
+    <string name="my_down">缓存</string>
+    <string name="my_collection">收藏</string>
+    <string name="my_them">主题</string>
+    <string name="clean">清除</string>
+    <string name="editor_preview">保存</string>
+    <string name="editor_publish">新增</string>
+    <string name="mine_title">我的</string>
+    <string name="news_title">游戏活动</string>
+    <string name="daoju_title">商城道具</string>
+    <string name="theme_title">主题</string>
+    <string name="reg_login_title">登陆/注册</string>
+    <string name="my_type">普通会员</string>
+
+    <string name="share">分享</string>
+    <string name="fuli">游戏活动</string>
+    <string name="setting">设置</string>
+    <string name="feedback">建议反馈</string>
+    <string name="collection">我的收藏</string>
+    <string name="download">我的下载</string>
+    <string name="about">乐游</string>
+    <string name="close">关闭</string>
+    <string name="about_me">有趣材料分享</string>
+
+    <string name="expand">展开</string>
+    <string name="shrink">收起</string>
+
+    <string name="setting_recommend">推荐给好友</string>
+    <string name="setting_recommend_content">发现一个有趣App</string>
+    <string name="setting_recommend_url">https://baidu.com</string>
+    <string name="setting_recommend_copy">复制</string>
+    <string name="setting_recommend_clear">清理缓存</string>
+
+    <string name="search_history">搜索记录</string>
+    <string name="search_recommend">热门推荐</string>
+
+    <!-- Registration and Login -->
+    <string name="hint_email">邮箱,可以辅助你找回密码</string>
+    <string name="hint_password">密码</string>
+    <string name="hint_reg_password">密码,不要使用简单密码,尽力避免盗号</string>
+    <string name="hint_name">账号或手机号</string>
+    <string name="hint_reg_name">账号或手机号,建议使用手机号，便于有问题联系</string>
+    <string name="btn_login">登陆</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_link_to_register">没有帐号? 点我注册.</string>
+    <string name="btn_link_to_login">有账号的! 点我登陆.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+
+    <!-- for floating search view-->
+    <string name="action_voice_rec">录语音</string>
+    <string name="action_location">定位</string>
+    <string name="action_home">回到商城</string>
+    <string name="action_change_colors">change style</string>
+</resources>
